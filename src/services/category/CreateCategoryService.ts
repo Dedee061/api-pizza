@@ -1,9 +1,27 @@
 import prismaClient from "../../prisma";
 
-class CreateCategoryService {
-    async execute(){
-        return {ok: true}
-    }
+interface CategoryRequest {
+  name: string;
 }
 
-export {CreateCategoryService}
+class CreateCategoryService {
+  async execute({ name }: CategoryRequest) {
+    if (name == "") {
+      throw new Error("Nome da categoria não pode estar vazio");
+    }
+
+    const category = await prismaClient.category.create({
+      data: {
+        name: name,
+      },
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+
+    return category;
+  }
+}
+
+export { CreateCategoryService };
