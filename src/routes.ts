@@ -5,6 +5,7 @@ import { AuthUserController } from './controllers/users/AuthUserController'
 import { DetailUserController } from './controllers/users/DetailUserController'
 import { isAuthenticated } from './middlewares/isAuthenticated'
 import { CreateCategoryController } from './controllers/category/CreateCategoryController'
+import { ListCategoryController } from './services/category/ListCategoryController'
 
 const router = Router()
 
@@ -21,5 +22,6 @@ router.get('/me', isAuthenticated, new DetailUserController().Handler)
 
 // Rotas de Categoria
 router.post('/category', isAuthenticated, new CreateCategoryController().handler  )
+router.get('/category', isAuthenticated, new ListCategoryController().handler  )
 
 export {router}
