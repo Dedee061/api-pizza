@@ -34,3 +34,4 @@ router.post('/product', isAuthenticated , upload.single('file'), new CreateProdu
 
 
 export {router}
+
