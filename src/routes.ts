@@ -8,7 +8,9 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 import { CreateCategoryController } from './controllers/category/CreateCategoryController'
 import { ListCategoryController } from './services/category/ListCategoryController'
 import { CreateProductController } from './controllers/product/CreateProductController'
+import { ListByCategoryController } from './controllers/product/ListByCategoryController'
 import uploadConfig from './config/multer'
+
 
 const router = Router()
 
@@ -31,6 +33,7 @@ router.get('/category', isAuthenticated, new ListCategoryController().handler  )
 
 // rotas product
 router.post('/product', isAuthenticated , upload.single('file'), new CreateProductController().handler)
+router.get('/category/product', isAuthenticated , new ListByCategoryController().handler)
 
 
 export {router}
