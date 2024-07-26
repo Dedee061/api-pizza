@@ -13,11 +13,11 @@ import { CreateOrderController } from './controllers/order/CreateOrderController
 import { RemoveOrderController } from './controllers/order/RemoveOrderController'
 import { AddItemController } from './controllers/order/AddItemController'
 import { RemoveItemController } from './controllers/order/RemoveItemController'
-
-
-import uploadConfig from './config/multer'
 import { SendOrderController } from './controllers/order/SendOrderController'
 import { ListOrderController } from './controllers/order/ListOrderController'
+import { DetailOrderController } from './controllers/order/DetailOrderController'
+
+import uploadConfig from './config/multer'
 
 
 const router = Router()
@@ -50,6 +50,7 @@ router.post('/order/add', isAuthenticated , new AddItemController().handler)
 router.delete('/order/remove', isAuthenticated , new RemoveItemController().handler)
 router.put('/order/send', isAuthenticated , new SendOrderController().handler)
 router.get('/orders', isAuthenticated , new ListOrderController().handler)
+router.get('/orders/detail', isAuthenticated , new DetailOrderController().handler)
 
 
 export {router}
