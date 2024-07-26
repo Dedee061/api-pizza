@@ -18,6 +18,7 @@ import { ListOrderController } from './controllers/order/ListOrderController'
 import { DetailOrderController } from './controllers/order/DetailOrderController'
 
 import uploadConfig from './config/multer'
+import { FinishOrderController } from './controllers/order/FinishOrderController'
 
 
 const router = Router()
@@ -46,11 +47,15 @@ router.get('/category/product', isAuthenticated , new ListByCategoryController()
 // rotas order
 router.post('/order', isAuthenticated , new CreateOrderController().handler)
 router.delete('/order', isAuthenticated , new RemoveOrderController().handler)
+
 router.post('/order/add', isAuthenticated , new AddItemController().handler)
 router.delete('/order/remove', isAuthenticated , new RemoveItemController().handler)
 router.put('/order/send', isAuthenticated , new SendOrderController().handler)
+
 router.get('/orders', isAuthenticated , new ListOrderController().handler)
 router.get('/orders/detail', isAuthenticated , new DetailOrderController().handler)
+
+router.put('/order/finish', isAuthenticated , new FinishOrderController().handler)
 
 
 export {router}
